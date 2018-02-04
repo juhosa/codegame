@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-    private float moveSize = 0.64f;
+    private float moveSize = 0.32f;
 
     //States
     bool dead = false;
@@ -28,9 +28,9 @@ public class Player : MonoBehaviour {
         Vector2 orig = new Vector2(transform.position.x, transform.position.y);
 
         //Draw debug raycast lines
-        //Debug.DrawRay(orig, Vector2.down * 0.16f, Color.red);
+        Debug.DrawRay(orig, Vector2.down * 0.08f, Color.red);
         //Raycast
-        RaycastHit2D ray = Physics2D.Raycast(orig, Vector2.down, 0.16f);
+        RaycastHit2D ray = Physics2D.Raycast(orig, Vector2.down, 0.08f);
 
         //If ground under feet, move with WASD
         if (ray && !dead)
