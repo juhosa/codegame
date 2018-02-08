@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 
     private float moveSize = 0.32f;
+    private float rayLenght = 0.24f;
 
     //States
     bool dead = false;
@@ -19,21 +20,20 @@ public class Player : MonoBehaviour {
     public Animator anim;
 
 	void Start () {
+        //Screen.SetResolution(640, 480, true);
         anim = GetComponent<Animator>();
 	}
 	
 	void Update () {
 
-        //Origin of the player
-        Vector2 orig = new Vector2(transform.position.x, transform.position.y);
-
         //Draw debug raycast lines
-        Debug.DrawRay(orig, Vector2.down * 0.08f, Color.red);
-        //Raycast
-        RaycastHit2D ray = Physics2D.Raycast(orig, Vector2.down, 0.08f);
+        //Debug.DrawRay(orig, Vector2.down * rayLenght, Color.red);
+        //Debug.DrawRay(orig, Vector2.up * rayLenght, Color.red);
+        //Debug.DrawRay(orig, Vector2.left * rayLenght, Color.red);
+        //Debug.DrawRay(orig, Vector2.right * rayLenght, Color.red);
 
-        //If ground under feet, move with WASD
-        if (ray && !dead)
+        //If not dead allow movement
+        if (!dead)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -56,6 +56,7 @@ public class Player : MonoBehaviour {
         }
 
         //If dead, just fall down
+        /*
         if (dead)
         {
             transform.position = new Vector3(transform.position.x, transform.position.y-0.1f, transform.position.z);
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour {
                 transform.localScale = new Vector3(transform.localScale.x - 0.05f, transform.localScale.y - 0.05f, transform.localScale.z - 0.05f);
             }
         }
+        */
 
         //Animations
         if (!dead)
@@ -83,19 +85,27 @@ public class Player : MonoBehaviour {
 
     public void MoveForward()
     {
-        if (dir==3)
+        //Origin of the player
+        Vector2 orig = new Vector2(transform.position.x, transform.position.y);
+        //Raycasting
+        RaycastHit2D ray_down = Physics2D.Raycast(orig, Vector2.down, rayLenght);
+        RaycastHit2D ray_up = Physics2D.Raycast(orig, Vector2.up, rayLenght);
+        RaycastHit2D ray_left = Physics2D.Raycast(orig, Vector2.left, rayLenght);
+        RaycastHit2D ray_right = Physics2D.Raycast(orig, Vector2.right, rayLenght);
+
+        if (dir==3 && !ray_up)
         {
             transform.position += new Vector3(0, moveSize);
         }
-        if (dir==1)
+        if (dir==1 && !ray_down)
         {
             transform.position += new Vector3(0, -moveSize);
         }
-        if (dir==0)
+        if (dir==0 && !ray_right)
         {
             transform.position += new Vector3(moveSize, 0);
         }
-        if (dir==2)
+        if (dir==2 && !ray_left)
         {
             transform.position += new Vector3(-moveSize, 0);
         }
