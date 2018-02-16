@@ -1,0 +1,9 @@
+# Files to ignore
+*.sln
+*.csproj
+
+# Folders
+/Builds/*
+/Packages/*
+/Temp/*
+/.vs/*
