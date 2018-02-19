@@ -29,7 +29,6 @@ public class Player : MonoBehaviour {
 	}
 	
 	void Update () {
-        Debug.Log(GameManager.instance.coins);
         //Origin of the player
         Vector2 orig = new Vector2(transform.position.x, transform.position.y);
         //Draw debug raycast lines
