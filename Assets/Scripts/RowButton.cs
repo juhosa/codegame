@@ -11,11 +11,11 @@ public class RowButton : MonoBehaviour {
     {
         Vector2 clickpo = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         //Debug.Log(clickpo);
-        if (left && ((clickpo.x < 0.16f) && (clickpo.y > -0.24f) && (clickpo.y < 0.24f)))
+        if (Input.GetMouseButton(0) && left && ((clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f)))
         {
             row.GetComponent<CodeBaseRow>().MoveLeft();
         }
-        if (!left && ((clickpo.x > -0.16f) && (clickpo.y > -0.24f) && (clickpo.y < 0.24f)))
+        if (Input.GetMouseButton(0) && !left && ((clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f)))
         {
             row.GetComponent<CodeBaseRow>().MoveRight();
         }

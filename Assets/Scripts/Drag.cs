@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class Drag : MonoBehaviour {
 
-    public bool secondBlock = false;
+    public bool locked = false;
+    public bool follow = true;
 
     private float speed = 0.25f;
-    private bool follow = true;
     private Vector3 returnPos;
-    private Vector3 startPos;
+    public Vector3 startPos;
+    private CodeBase targetBase;
 
     void Start()
     {
-        startPos = transform.position;
-        returnPos = transform.position;
+        returnPos = startPos;
     }
 
     void Update()
     {
         Vector2 clickpo = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-        //Debug.Log(clickpo);
-        if (Input.GetMouseButtonDown(0) && (clickpo.x>-0.16f) && (clickpo.x <0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f))
+        if (!locked)
         {
-            follow = true;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            follow = false;
+            //Follow cursor when clicked
+            if (Input.GetMouseButtonDown(0) && (clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f))
+            {
+                follow = true;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                follow = false;
+            }
         }
 
+        //Jump to cursor position if following
         if (follow)
         {
             Vector3 mousepo = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -37,30 +41,32 @@ public class Drag : MonoBehaviour {
         }
         else
         {
+            //Else lerp back to start
             transform.position = Vector2.Lerp(transform.position, returnPos, speed);
         }
 
-        //Destroy with left click
-        if (Input.GetMouseButtonDown(1) && !follow && (clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f))
+        //Destroy if at starting pos
+        if (Vector3.Distance(transform.position,returnPos)<=0.16f && !follow)
         {
+            if (targetBase!=null && returnPos==targetBase.transform.position)
+            {
+                targetBase.ChangeToBlock(GetComponent<SpriteRenderer>().sprite, startPos);
+            }
             Destroy(gameObject);
         }
-
-        //Destroy if at starting pos
-        {
-            if (Vector3.Distance(transform.position,startPos)<=0.16f && !follow)
-            {
-                Destroy(gameObject);
-            }
-        }
-        Debug.Log(transform.position);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (follow && !collision.gameObject.GetComponent<CodeBase>().occupied)
+        if (follow)
         {
+            targetBase = collision.gameObject.GetComponent<CodeBase>();
             returnPos = new Vector2(collision.transform.position.x, collision.transform.position.y);
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        returnPos = startPos;
     }
 }

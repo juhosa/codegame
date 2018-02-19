@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Giver : MonoBehaviour {
 
-    public GameObject blockToGive;
+    public Drag blockToGive;
+
+    private SpriteRenderer sr;
+
+    private void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
@@ -12,8 +19,10 @@ public class Giver : MonoBehaviour {
         Vector2 clickpo = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         if (Input.GetMouseButtonDown(0) && (clickpo.x > -0.32f) && (clickpo.x < 0.32f) && (clickpo.y > -0.32f) && (clickpo.y < 0.32f))
         {
-            Debug.Log("Clicked");
-            Instantiate(blockToGive);
+            Vector2 middle = new Vector2(transform.position.x, transform.position.y);
+            Drag block = Instantiate(blockToGive, middle, Quaternion.identity);
+            block.GetComponent<SpriteRenderer>().sprite = sr.sprite;
+            block.startPos = middle;
         }
     }
 }

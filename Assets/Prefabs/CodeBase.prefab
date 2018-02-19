@@ -60,7 +60,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!61 &61246103137645422
@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da5d73a5aa41ee4dbbba8dd92793c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupied: 0
+  codeBlock: {fileID: 114304292217032544, guid: a091485a9aa2fe44388abfd0e8989355,
+    type: 2}
 --- !u!212 &212020317442073216
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -131,8 +132,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -523289193
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 278f69546d20a2140893d90578bbf245, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
