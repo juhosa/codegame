@@ -12,6 +12,8 @@ public class Drag : MonoBehaviour {
     public Vector3 startPos;
     private CodeBase targetBase;
 
+    public int blockId;
+
     void Start()
     {
         returnPos = startPos;
@@ -51,6 +53,11 @@ public class Drag : MonoBehaviour {
             if (targetBase!=null && returnPos==targetBase.transform.position)
             {
                 targetBase.ChangeToBlock(GetComponent<SpriteRenderer>().sprite, startPos);
+                //Transfer the blockId if it's something else as 0
+                if (blockId > 0)
+                {
+                    targetBase.blockId = this.blockId;
+                }
             }
             Destroy(gameObject);
         }
