@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     public int coins = 0;
     public int key = 0;
     public bool running = false;
+    public bool levelCompleted = false;
+
 
     private void Awake()
     {

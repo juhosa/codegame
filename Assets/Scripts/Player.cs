@@ -15,6 +15,9 @@ public class Player : MonoBehaviour {
     public bool dead = false;
     public bool canMove = true;
     public int dir = 0;
+
+    private Vector2 startPos;
+    private int startDir;
     //0 = Right;
     //1 = Down;
     //2 = Left;
@@ -23,7 +26,11 @@ public class Player : MonoBehaviour {
     //Components
     public Animator anim;
 
+    private Coroutine coro;
+
 	void Start () {
+        startPos = transform.position;
+        startDir = dir;
         //Screen.SetResolution(640, 480, true);
         anim = GetComponent<Animator>();
 	}
@@ -74,6 +81,15 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void ReturtToStart()
+    {
+        //Stop everything
+        StopCoroutine(coro);
+        transform.position = startPos;
+        dir = startDir;
+        canMove = true;
+    }
+
     public void MoveForward()
     {
         if (canMove && !dead)
@@ -90,25 +106,25 @@ public class Player : MonoBehaviour {
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y + moveSize);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
             if (dir == 1 && !ray_down)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y - moveSize);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
             if (dir == 0 && !ray_right)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x + moveSize, transform.position.y);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
             if (dir == 2 && !ray_left)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x - moveSize, transform.position.y);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
         }
     }
@@ -129,25 +145,25 @@ public class Player : MonoBehaviour {
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y - moveSize);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
             if (dir == 1 && !ray_up)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y + moveSize);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
             if (dir == 0 && !ray_left)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x - moveSize, transform.position.y);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
             if (dir == 2 && !ray_right)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x + moveSize, transform.position.y);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
         }
     }
@@ -172,25 +188,25 @@ public class Player : MonoBehaviour {
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y + (!ray_upL?(moveSize*2):moveSize));
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
             if (dir == 1 && !ray_down)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y - (!ray_downL ? (moveSize * 2) : moveSize));
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
             if (dir == 0 && !ray_right)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x + (!ray_rightL ? (moveSize * 2) : moveSize), transform.position.y);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
             if (dir == 2 && !ray_left)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x - (!ray_leftL ? (moveSize * 2) : moveSize), transform.position.y);
-                StartCoroutine(MoveToPosition(orig, target));
+                coro = StartCoroutine(MoveToPosition(orig, target));
             }
         }
     }

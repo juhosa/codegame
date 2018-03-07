@@ -9,6 +9,15 @@ public class Items : MonoBehaviour {
     public GameObject[] locks;
     //1 = Key
     //2 = Coin
+    //3 = Exit key
+    public Exit exit;
+
+    private void Start()
+    {
+        //Get exit
+        GameObject exitObject = GameObject.Find("Exit");
+        exit = exitObject.GetComponent<Exit>();
+    }
 
     public void OnTriggerStay2D(Collider2D collision)
     {
@@ -30,6 +39,13 @@ public class Items : MonoBehaviour {
             {
                 Debug.Log("Got coin!");
                 GameManager.instance.coins += 1;
+                Destroy(gameObject);
+            }
+            //Exit Key
+            if (type == 3)
+            {
+                Debug.Log("Got exit key!");
+                exit.keysNeeded--;
                 Destroy(gameObject);
             }
         }

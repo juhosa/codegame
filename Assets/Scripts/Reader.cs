@@ -21,7 +21,6 @@ public class Reader : MonoBehaviour {
 
     private void Start()
     {
-        
         //Get player to do actions for him
         GameObject player = GameObject.Find("/Grid/Player");
         playerObject = player.GetComponent<Player>();
@@ -85,6 +84,14 @@ public class Reader : MonoBehaviour {
         //Destroy reader if over the last codebase
         if (transform.position.x > (startpo.x+posDifference))
         {
+            Stop();
+        }
+    }
+
+    public void Stop()
+    {
+        if (!GameManager.instance.levelCompleted)
+        {
             GameManager.instance.running = false;
             //Reset all codebases so they can be used again
             CodeBase[] allObjects = FindObjectsOfType<CodeBase>();
@@ -93,7 +100,9 @@ public class Reader : MonoBehaviour {
                 cb.used = false;
             }
 
-            Destroy(gameObject);
+            //Return player to start
+            playerObject.ReturtToStart();
         }
+        Destroy(gameObject);
     }
 }

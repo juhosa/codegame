@@ -11,6 +11,7 @@ public class CodeBaseRow : MonoBehaviour {
     public int rowSize = 1;
     public CodeBase basePrefab;
     public Reader readerPrefab;
+    private Reader reader;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class CodeBaseRow : MonoBehaviour {
 
     public void RunCode()
     {
-        if (!GameManager.instance.running)
+        if (!GameManager.instance.running && !GameManager.instance.levelCompleted)
         {
             GameManager.instance.running = true;
             /*
@@ -51,12 +52,17 @@ public class CodeBaseRow : MonoBehaviour {
             {
                 CodeBase childbase = child.GetComponent<CodeBase>();
                 Vector2 pos = new Vector2(child.transform.position.x-0.16f, child.transform.position.y);
-                Reader reader = Instantiate(readerPrefab, pos, Quaternion.identity);
+                reader = Instantiate(readerPrefab, pos, Quaternion.identity);
                 reader.transform.parent = transform;
                 reader.posDifference = lastpo.x - startpo.x;
                 break;
             }
         }
+    }
+
+    public void StopCode()
+    {
+        reader.Stop();
     }
 
     public void MoveLeft()
