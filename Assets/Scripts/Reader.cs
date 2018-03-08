@@ -8,7 +8,7 @@ public class Reader : MonoBehaviour {
     private float rayLength = 0.01f;
     public LayerMask codeBlockLayer;
 
-    private Player playerObject;
+    public Player playerObject;
 
     public float posDifference;
     private Vector2 startpo;
@@ -32,6 +32,11 @@ public class Reader : MonoBehaviour {
         startpo = transform.parent.transform.position;
         //Move to the right
         transform.position = new Vector2(transform.position.x+(speed * Time.deltaTime), transform.position.y);
+        //Destroy reader if over the last codebase
+        if (transform.position.x > (startpo.x + posDifference))
+        {
+            Stop();
+        }
 
         //Raycast and see collisions with block
         Vector2 orig = new Vector2(transform.position.x, transform.position.y);
@@ -77,14 +82,12 @@ public class Reader : MonoBehaviour {
             if (rayCodebase.blockId == 1)
             {
                 rayCodebase.used = true;
-                transform.position = loopPositions[rayCodebase.currentSprite];
+                //Loop cant work if you touch the start-one first
+                if (loopPositions[rayCodebase.currentSprite].x!=0)
+                {
+                    transform.position = loopPositions[rayCodebase.currentSprite];
+                }
             }
-        }
-
-        //Destroy reader if over the last codebase
-        if (transform.position.x > (startpo.x+posDifference))
-        {
-            Stop();
         }
     }
 

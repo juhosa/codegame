@@ -11,12 +11,17 @@ public class CodeBaseRow : MonoBehaviour {
     public int rowSize = 1;
     public CodeBase basePrefab;
     public Reader readerPrefab;
+    public Giver giverPrefab;
     private Reader reader;
+
+    //Array and stuff for creating the codeblock givers
+    public Sprite[] codeGivers;
+    public int[] codeGiverCounts;
 
     private void Start()
     {
         startpo = transform.position;
-
+        //Create the coderow
         for (int i=0; i<=rowSize; i++)
         {
             Vector2 posR = new Vector2(transform.position.x+(i*0.32f), transform.position.y);
@@ -28,6 +33,15 @@ public class CodeBaseRow : MonoBehaviour {
             {
                 lastpo = basR.transform.position;
             }
+        }
+        //Create the codeblock givers
+        for (int i=0; i<codeGivers.Length; i++)
+        {
+            startpo = new Vector2(0.32f+(i*0.48f), 0.64f);
+            Giver giv = Instantiate(giverPrefab, startpo, Quaternion.identity);
+            giv.transform.name = "Giver " + i;
+            giv.GetComponent<SpriteRenderer>().sprite = codeGivers[i];
+            giv.count = codeGiverCounts[i];
         }
     }
 

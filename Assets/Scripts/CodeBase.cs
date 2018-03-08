@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class CodeBase : MonoBehaviour {
@@ -26,6 +27,15 @@ public class CodeBase : MonoBehaviour {
 
     private void Update()
     {
+        //Change id according to sprite
+        if (Array.IndexOf(spriteLoopBlockEnd, sr.sprite) > -1)
+        {
+            blockId = 2;
+        }
+        if (Array.IndexOf(spriteLoopBlock, sr.sprite) > -1)
+        {
+            blockId = 1;
+        }
         if (sr.sprite!=spriteOrig && !GameManager.instance.running)
         {
             Vector2 clickpo = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
@@ -41,9 +51,6 @@ public class CodeBase : MonoBehaviour {
                     block.GetComponent<SpriteRenderer>().sprite = sr.sprite;
                     block.startPos = _startPos;
                     sr.sprite = spriteOrig;
-                    //give the new block this base's id
-                    block.blockId = this.blockId;
-                    //And then return blockId to 0
                     blockId = 0;
                 }
                 //Change with mouse wheel if id = 0 (loop)
@@ -80,6 +87,9 @@ public class CodeBase : MonoBehaviour {
                 //Destroy with left click
                 if (Input.GetMouseButtonDown(1))
                 {
+                    //Reset sprite to the first one of the array when left clicked so count++ works
+                    if (blockId == 1) { sr.sprite = spriteLoopBlock[0]; }
+                    if (blockId == 2) { sr.sprite = spriteLoopBlockEnd[0]; }
                     ReturnToStart();
                 }
             }
@@ -96,6 +106,7 @@ public class CodeBase : MonoBehaviour {
             block.GetComponent<SpriteRenderer>().sprite = sr.sprite;
             block.startPos = _startPos;
             block.locked = true;
+            GiverCount();
             sr.sprite = spriteOrig;
             //Return the block id to 0, since the block is gone
             blockId = 0;
@@ -148,5 +159,17 @@ public class CodeBase : MonoBehaviour {
         used = true;
         yield return new WaitForSeconds(0.25f);
         used = false;
+    }
+
+    private void GiverCount()
+    {
+        Giver[] allObjects = FindObjectsOfType<Giver>();
+        foreach (Giver giv in allObjects)
+        {
+            if (this.sr.sprite == giv.GetComponent<SpriteRenderer>().sprite)
+            {
+                giv.count++;
+            }
+        }
     }
 }

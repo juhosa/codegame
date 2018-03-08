@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
     public bool canMove = true;
     public int dir = 0;
 
+    private bool coroRunning = false;
+
     private Vector2 startPos;
     private int startDir;
     //0 = Right;
@@ -79,15 +81,6 @@ public class Player : MonoBehaviour {
             Debug.Log("Restart!");
             SceneManager.LoadScene("Main");
         }
-    }
-
-    public void ReturtToStart()
-    {
-        //Stop everything
-        StopCoroutine(coro);
-        transform.position = startPos;
-        dir = startDir;
-        canMove = true;
     }
 
     public void MoveForward()
@@ -213,6 +206,7 @@ public class Player : MonoBehaviour {
 
     public IEnumerator MoveToPosition(Vector3 orig, Vector3 position)
     {
+        coroRunning = true;
         float t = 0f;
         while (t < 1)
         {
@@ -221,6 +215,7 @@ public class Player : MonoBehaviour {
             yield return null;
         }
         canMove = true;
+        coroRunning = false;
     }
 
     public void RotateRight()
@@ -251,5 +246,14 @@ public class Player : MonoBehaviour {
                 dir -= 1;
             }
         }
+    }
+
+    public void ReturtToStart()
+    {
+        //Stop everything
+        if (coroRunning) { StopCoroutine(coro); }
+        transform.position = startPos;
+        dir = startDir;
+        canMove = true;
     }
 }
