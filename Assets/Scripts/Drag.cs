@@ -53,6 +53,18 @@ public class Drag : MonoBehaviour {
             {
                 targetBase.ChangeToBlock(GetComponent<SpriteRenderer>().sprite, startPos);
             }
+            else
+            {
+                //Give count++ to the giver if sprites are the same
+                Giver[] allObjects = FindObjectsOfType<Giver>();
+                foreach (Giver giv in allObjects)
+                {
+                    if (this.GetComponent<SpriteRenderer>().sprite == giv.GetComponent<SpriteRenderer>().sprite)
+                    {
+                        giv.count++;
+                    }
+                }
+            }
             Destroy(gameObject);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Giver : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class Giver : MonoBehaviour {
     private SpriteRenderer sr;
 
     public int count;
+
+    public Text textUi;
 
     private float range=0.24f;
 
@@ -18,6 +21,8 @@ public class Giver : MonoBehaviour {
 
     private void Update()
     {
+        //Constantly update the text
+        textUi.text = count.ToString();
         //Give codeblock when clicked
         Vector2 clickpo = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         if (count>0 && !GameManager.instance.running && Input.GetMouseButtonDown(0) && (clickpo.x > -range) && (clickpo.x < range) && (clickpo.y > -range) && (clickpo.y < range))

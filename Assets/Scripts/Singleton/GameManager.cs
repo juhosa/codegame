@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour {
     public bool running = false;
     public bool levelCompleted = false;
 
+    public bool transitionInProgress = false;
+
 
     private void Awake()
     {

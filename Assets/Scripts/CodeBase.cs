@@ -106,7 +106,6 @@ public class CodeBase : MonoBehaviour {
             block.GetComponent<SpriteRenderer>().sprite = sr.sprite;
             block.startPos = _startPos;
             block.locked = true;
-            GiverCount();
             sr.sprite = spriteOrig;
             //Return the block id to 0, since the block is gone
             blockId = 0;
@@ -154,22 +153,8 @@ public class CodeBase : MonoBehaviour {
         return this.transform.parent.GetChild(thisIndex + 1);
     }
 
-    public IEnumerator UsedWait()
+    public void Used()
     {
         used = true;
-        yield return new WaitForSeconds(0.25f);
-        used = false;
-    }
-
-    private void GiverCount()
-    {
-        Giver[] allObjects = FindObjectsOfType<Giver>();
-        foreach (Giver giv in allObjects)
-        {
-            if (this.sr.sprite == giv.GetComponent<SpriteRenderer>().sprite)
-            {
-                giv.count++;
-            }
-        }
     }
 }

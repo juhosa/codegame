@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CodeBaseRow : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public class CodeBaseRow : MonoBehaviour {
     public Reader readerPrefab;
     public Giver giverPrefab;
     private Reader reader;
+    //Text and canvas for instantiation
+    public Text textPrefab;
+    public Canvas levelCanvas;
 
     //Array and stuff for creating the codeblock givers
     public Sprite[] codeGivers;
@@ -42,6 +46,12 @@ public class CodeBaseRow : MonoBehaviour {
             giv.transform.name = "Giver " + i;
             giv.GetComponent<SpriteRenderer>().sprite = codeGivers[i];
             giv.count = codeGiverCounts[i];
+            //Text for codegiver
+            Text givText = Instantiate(textPrefab, Vector2.zero, Quaternion.identity);
+            givText.transform.SetParent(levelCanvas.transform,false);
+            givText.rectTransform.localPosition = new Vector2(-576+(i*96), -460);
+            giv.textUi = givText;
+
         }
     }
 
@@ -76,7 +86,10 @@ public class CodeBaseRow : MonoBehaviour {
 
     public void StopCode()
     {
-        reader.Stop();
+        if (reader != null && !GameManager.instance.levelCompleted)
+        {
+            reader.Stop();
+        }
     }
 
     public void MoveLeft()

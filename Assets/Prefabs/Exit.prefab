@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keysNeeded: 1
+  transitionPrefab: {fileID: 114464419351723688, guid: 947350ee32ea8de4c9a02acb8f7d66e9,
+    type: 2}
 --- !u!212 &212449491536231976
 SpriteRenderer:
   m_ObjectHideFlags: 1

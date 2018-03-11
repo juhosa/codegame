@@ -216,6 +216,13 @@ public class Player : MonoBehaviour {
         }
         canMove = true;
         coroRunning = false;
+        //Get reader
+        GameObject readerObject = GameObject.Find("BaseReader(Clone)");
+        if (readerObject != null)
+        {
+            Reader reader = readerObject.GetComponent<Reader>();
+            reader.wait = false;
+        }
     }
 
     public void RotateRight()
@@ -255,5 +262,74 @@ public class Player : MonoBehaviour {
         transform.position = startPos;
         dir = startDir;
         canMove = true;
+    }
+
+    public void MoveUp()
+    {
+        if (canMove && !dead)
+        {
+            //Origin of the player
+            Vector2 orig = new Vector2(transform.position.x, transform.position.y);
+            //Raycasting
+            RaycastHit2D ray_up = Physics2D.Raycast(orig, Vector2.up, rayLength, wallLayer);
+
+            if (!ray_up)
+            {
+                canMove = false;
+                Vector3 target = new Vector3(transform.position.x, transform.position.y + moveSize);
+                coro = StartCoroutine(MoveToPosition(orig, target));
+            }
+        }
+    }
+    public void MoveRight()
+    {
+        if (canMove && !dead)
+        {
+            //Origin of the player
+            Vector2 orig = new Vector2(transform.position.x, transform.position.y);
+            //Raycasting
+            RaycastHit2D ray_right = Physics2D.Raycast(orig, Vector2.right, rayLength, wallLayer);
+
+            if (!ray_right)
+            {
+                canMove = false;
+                Vector3 target = new Vector3(transform.position.x + moveSize, transform.position.y);
+                coro = StartCoroutine(MoveToPosition(orig, target));
+            }
+        }
+    }
+    public void MoveLeft()
+    {
+        if (canMove && !dead)
+        {
+            //Origin of the player
+            Vector2 orig = new Vector2(transform.position.x, transform.position.y);
+            //Raycasting
+            RaycastHit2D ray_left = Physics2D.Raycast(orig, Vector2.right, rayLength, wallLayer);
+
+            if (!ray_left)
+            {
+                canMove = false;
+                Vector3 target = new Vector3(transform.position.x - moveSize, transform.position.y);
+                coro = StartCoroutine(MoveToPosition(orig, target));
+            }
+        }
+    }
+    public void MoveDown()
+    {
+        if (canMove && !dead)
+        {
+            //Origin of the player
+            Vector2 orig = new Vector2(transform.position.x, transform.position.y);
+            //Raycasting
+            RaycastHit2D ray_left = Physics2D.Raycast(orig, Vector2.right, rayLength, wallLayer);
+
+            if (!ray_left)
+            {
+                canMove = false;
+                Vector3 target = new Vector3(transform.position.x, transform.position.y - moveSize);
+                coro = StartCoroutine(MoveToPosition(orig, target));
+            }
+        }
     }
 }

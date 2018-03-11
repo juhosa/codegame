@@ -11,6 +11,8 @@ public class Exit : MonoBehaviour {
     private BoxCollider2D bc2d;
     private Player playerObject;
 
+    public Transition transitionPrefab;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -28,9 +30,14 @@ public class Exit : MonoBehaviour {
             anim.SetBool("Open",opened);
             bc2d.enabled = false;
         }
-        if (opened && playerObject.transform.position == transform.position)
+        if (opened && playerObject.transform.position == transform.position && !GameManager.instance.levelCompleted)
         {
+            //Complete the level if player at position
             GameManager.instance.levelCompleted = true;
+
+            Vector2 pos = new Vector2(3.2f, 5.1f);
+            Transition tra = Instantiate(transitionPrefab, pos, Quaternion.identity) as Transition;
+            tra.destinationScene = "Menu";
         }
     }
 }

@@ -19,6 +19,9 @@ public class Reader : MonoBehaviour {
     //Codeblock sprites
     public Sprite[] codeBlockSprite;
 
+    //Stop the reader if needed
+    public bool wait = false;
+
     private void Start()
     {
         //Get player to do actions for him
@@ -31,7 +34,10 @@ public class Reader : MonoBehaviour {
         //Get startpo each frame since it's the parent's startpo
         startpo = transform.parent.transform.position;
         //Move to the right
-        transform.position = new Vector2(transform.position.x+(speed * Time.deltaTime), transform.position.y);
+        if (!wait)
+        {
+            transform.position = new Vector2(transform.position.x + (speed * Time.deltaTime), transform.position.y);
+        }
         //Destroy reader if over the last codebase
         if (transform.position.x > (startpo.x + posDifference))
         {
@@ -42,52 +48,60 @@ public class Reader : MonoBehaviour {
         Vector2 orig = new Vector2(transform.position.x, transform.position.y);
         RaycastHit2D ray = Physics2D.Raycast(orig, Vector2.right, rayLength, codeBlockLayer);
         Debug.DrawRay(orig, Vector2.right * rayLength, Color.green);
-        CodeBase rayCodebase = ray.collider.gameObject.GetComponent<CodeBase>();
-
-        if (ray && !rayCodebase.used && rayCodebase.HasSprite())
+        if (ray)
         {
-            //Make player do actions corresponding the codebase
-            if (rayCodebase.GetSprite()== codeBlockSprite[0])
-            {
-                StartCoroutine(rayCodebase.UsedWait());
-                playerObject.MoveForward();
-            }
-            if (rayCodebase.GetSprite() == codeBlockSprite[1])
-            {
-                StartCoroutine(rayCodebase.UsedWait());
-                playerObject.RotateRight();
-            }
-            if (rayCodebase.GetSprite() == codeBlockSprite[2])
-            {
-                StartCoroutine(rayCodebase.UsedWait());
-                playerObject.RotateLeft();
-            }
-            if (rayCodebase.GetSprite() == codeBlockSprite[3])
-            {
-                StartCoroutine(rayCodebase.UsedWait());
-                playerObject.MoveBackward();
-            }
-            if (rayCodebase.GetSprite() == codeBlockSprite[4])
-            {
-                StartCoroutine(rayCodebase.UsedWait());
-                playerObject.JumpForward();
-            }
+            CodeBase rayCodebase = ray.collider.gameObject.GetComponent<CodeBase>();
 
-            //React to loop blocks
-            if (rayCodebase.blockId == 2)
+            if (!rayCodebase.used && rayCodebase.HasSprite())
             {
-                rayCodebase.used = true;
-                loopPositions[rayCodebase.currentSprite] = rayCodebase.transform.position;
-            }
-            if (rayCodebase.blockId == 1)
-            {
-                rayCodebase.used = true;
-                //Loop cant work if you touch the start-one first
-                if (loopPositions[rayCodebase.currentSprite].x!=0)
+                //Make player do actions corresponding the codebase
+                if (rayCodebase.GetSprite() == codeBlockSprite[0])
                 {
-                    transform.position = loopPositions[rayCodebase.currentSprite];
+                    rayCodebase.Used();
+                    playerObject.MoveForward();
+                }
+                if (rayCodebase.GetSprite() == codeBlockSprite[1])
+                {
+                    rayCodebase.Used();
+                    playerObject.RotateRight();
+                }
+                if (rayCodebase.GetSprite() == codeBlockSprite[2])
+                {
+                    rayCodebase.Used();
+                    playerObject.RotateLeft();
+                }
+                if (rayCodebase.GetSprite() == codeBlockSprite[3])
+                {
+                    rayCodebase.Used();
+                    playerObject.MoveBackward();
+                }
+                if (rayCodebase.GetSprite() == codeBlockSprite[4])
+                {
+                    rayCodebase.Used();
+                    playerObject.JumpForward();
+                }
+
+                //React to loop blocks
+                if (rayCodebase.blockId == 2)
+                {
+                    rayCodebase.used = true;
+                    loopPositions[rayCodebase.currentSprite] = rayCodebase.transform.position;
+                }
+                if (rayCodebase.blockId == 1)
+                {
+                    rayCodebase.used = true;
+                    //Loop cant work if you touch the start-one first
+                    if (loopPositions[rayCodebase.currentSprite].x != 0)
+                    {
+                        transform.position = loopPositions[rayCodebase.currentSprite];
+                    }
                 }
             }
+        }
+        //Stop if level completed
+        if (GameManager.instance.levelCompleted)
+        {
+            Stop();
         }
     }
 
