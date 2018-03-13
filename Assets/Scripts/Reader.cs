@@ -47,7 +47,7 @@ public class Reader : MonoBehaviour {
         //Raycast and see collisions with block
         Vector2 orig = new Vector2(transform.position.x, transform.position.y);
         RaycastHit2D ray = Physics2D.Raycast(orig, Vector2.right, rayLength, codeBlockLayer);
-        Debug.DrawRay(orig, Vector2.right * rayLength, Color.green);
+        //Debug.DrawRay(orig, Vector2.right * rayLength, Color.green);
         if (ray)
         {
             CodeBase rayCodebase = ray.collider.gameObject.GetComponent<CodeBase>();

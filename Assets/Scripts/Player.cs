@@ -35,6 +35,8 @@ public class Player : MonoBehaviour {
         startDir = dir;
         //Screen.SetResolution(640, 480, true);
         anim = GetComponent<Animator>();
+        //Get first standing sprite defined by the dir
+        RotateSprite();
 	}
 	
 	void Update () {
@@ -66,15 +68,6 @@ public class Player : MonoBehaviour {
             }
         }
 
-        //Animations
-        if (!dead)
-        {
-            if (dir == 0) { anim.Play("AnimPlayerRight"); }
-            if (dir == 1) { anim.Play("AnimPlayerDown"); }
-            if (dir == 2) { anim.Play("AnimPlayerLeft"); }
-            if (dir == 3) { anim.Play("AnimPlayerUp"); }
-        }
-
         //Restart scene
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -100,24 +93,28 @@ public class Player : MonoBehaviour {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y + moveSize);
                 coro = StartCoroutine(MoveToPosition(orig, target));
+                anim.Play("AnimPlayerUp");
             }
             if (dir == 1 && !ray_down)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y - moveSize);
                 coro = StartCoroutine(MoveToPosition(orig, target));
+                anim.Play("AnimPlayerDown");
             }
             if (dir == 0 && !ray_right)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x + moveSize, transform.position.y);
                 coro = StartCoroutine(MoveToPosition(orig, target));
+                anim.Play("AnimPlayerRight");
             }
             if (dir == 2 && !ray_left)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x - moveSize, transform.position.y);
                 coro = StartCoroutine(MoveToPosition(orig, target));
+                anim.Play("AnimPlayerLeft");
             }
         }
     }
@@ -139,24 +136,28 @@ public class Player : MonoBehaviour {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y - moveSize);
                 coro = StartCoroutine(MoveToPosition(orig, target));
+                anim.Play("AnimPlayerUp");
             }
             if (dir == 1 && !ray_up)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x, transform.position.y + moveSize);
                 coro = StartCoroutine(MoveToPosition(orig, target));
+                anim.Play("AnimPlayerDown");
             }
             if (dir == 0 && !ray_left)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x - moveSize, transform.position.y);
                 coro = StartCoroutine(MoveToPosition(orig, target));
+                anim.Play("AnimPlayerRight");
             }
             if (dir == 2 && !ray_right)
             {
                 canMove = false;
                 Vector3 target = new Vector3(transform.position.x + moveSize, transform.position.y);
                 coro = StartCoroutine(MoveToPosition(orig, target));
+                anim.Play("AnimPlayerLeft");
             }
         }
     }
@@ -237,6 +238,7 @@ public class Player : MonoBehaviour {
             {
                 dir += 1;
             }
+            RotateSprite();
         }
     }
 
@@ -252,7 +254,16 @@ public class Player : MonoBehaviour {
             {
                 dir -= 1;
             }
+            RotateSprite();
         }
+    }
+
+    private void RotateSprite()
+    {
+        if (dir == 0) { anim.Play("AnimPlayerRightIdle"); }
+        if (dir == 1) { anim.Play("AnimPlayerDownIdle"); }
+        if (dir == 2) { anim.Play("AnimPlayerLeftIdle"); }
+        if (dir == 3) { anim.Play("AnimPlayerUpIdle"); }
     }
 
     public void ReturtToStart()
@@ -262,6 +273,7 @@ public class Player : MonoBehaviour {
         transform.position = startPos;
         dir = startDir;
         canMove = true;
+        RotateSprite();
     }
 
     public void MoveUp()

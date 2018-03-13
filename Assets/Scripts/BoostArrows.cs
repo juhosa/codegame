@@ -33,6 +33,18 @@ public class BoostArrows : MonoBehaviour {
             {
                 collision.gameObject.GetComponent<Player>().MoveUp();
             }
+            if (dir == 1)
+            {
+                collision.gameObject.GetComponent<Player>().MoveRight();
+            }
+            if (dir == 2)
+            {
+                collision.gameObject.GetComponent<Player>().MoveDown();
+            }
+            if (dir == 3)
+            {
+                collision.gameObject.GetComponent<Player>().MoveLeft();
+            }
         }
     }
 }

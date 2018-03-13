@@ -179,7 +179,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Developement build
+  m_Text: 0.0.7
 --- !u!222 &63069843
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -746,7 +746,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: C:\codegame_
+  m_Text: 'codegame
+
+'
 --- !u!222 &1467063838
 CanvasRenderer:
   m_ObjectHideFlags: 0
