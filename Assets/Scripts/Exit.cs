@@ -40,4 +40,12 @@ public class Exit : MonoBehaviour {
             tra.destinationScene = "Menu";
         }
     }
+
+    public void ResetDoor()
+    {
+        opened = false;
+        anim.SetBool("Open", opened);
+        bc2d.enabled = true;
+        keysNeeded = 1;
+    }
 }

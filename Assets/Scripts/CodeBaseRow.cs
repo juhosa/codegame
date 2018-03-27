@@ -49,7 +49,7 @@ public class CodeBaseRow : MonoBehaviour {
             //Text for codegiver
             Text givText = Instantiate(textPrefab, Vector2.zero, Quaternion.identity);
             givText.transform.SetParent(levelCanvas.transform,false);
-            givText.rectTransform.localPosition = new Vector2(-576+(i*96), -460);
+            givText.rectTransform.localPosition = new Vector2(-576+(i*96), -465);
             giv.textUi = givText;
 
         }

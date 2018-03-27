@@ -4,24 +4,43 @@ using UnityEngine;
 
 public class Transition : MonoBehaviour {
 
-    GameObject mainCamera;
+    private GameObject mainCamera;
+    private GameObject levelCanvas;
+
+    public GameObject endPrefab;
 
     public string destinationScene;
+    private bool expand = true;
+    
 
     private void Start()
     {
         mainCamera = GameObject.Find("Main Camera");
+        levelCanvas = GameObject.Find("/Main Camera/Canvas");
         StartCoroutine(WaitAndGo());
     }
 
     private void Update()
     {
-        transform.localScale = new Vector2(transform.localScale.x,transform.localScale.y+1.5f);
+        if (expand)
+        {
+            transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y + 1.5f);
+        }
+        else
+        {
+            if (Input.anyKey)
+            {
+                //Change room
+                UnityEngine.SceneManagement.SceneManager.LoadScene(destinationScene);
+            }
+        }
     }
 
     private IEnumerator WaitAndGo()
     {
         yield return new WaitForSeconds(0.5f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(destinationScene);
+        GameObject end = Instantiate(endPrefab);
+        end.transform.SetParent(levelCanvas.transform, false);
+        expand = false;
     }
 }

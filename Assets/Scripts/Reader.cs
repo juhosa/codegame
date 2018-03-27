@@ -9,6 +9,7 @@ public class Reader : MonoBehaviour {
     public LayerMask codeBlockLayer;
 
     public Player playerObject;
+    public Exit exitObject;
 
     public float posDifference;
     private Vector2 startpo;
@@ -24,9 +25,12 @@ public class Reader : MonoBehaviour {
 
     private void Start()
     {
-        //Get player to do actions for him
+        //Get player to do actions for it
         GameObject player = GameObject.Find("/Grid/Player");
         playerObject = player.GetComponent<Player>();
+        //Get exit
+        GameObject exit = GameObject.Find("/Grid/Exit");
+        exitObject = exit.GetComponent<Exit>();
     }
 
     private void Update()
@@ -116,7 +120,14 @@ public class Reader : MonoBehaviour {
             {
                 cb.used = false;
             }
-
+            //Reset all items so they can be used again
+            Items[] allItems = FindObjectsOfType<Items>();
+            foreach (Items itm in allItems)
+            {
+                itm.Return();
+            }
+            //Reset exit
+            exitObject.ResetDoor();
             //Return player to start
             playerObject.ReturtToStart();
         }

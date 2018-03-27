@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f1d24e0c97a774baef4696b37730e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endPrefab: {fileID: 1357535472275184, guid: 86bb5ecdbd99d3e439b61d299aef299f, type: 2}
   destinationScene: Level01
 --- !u!212 &212241531154204980
 SpriteRenderer:

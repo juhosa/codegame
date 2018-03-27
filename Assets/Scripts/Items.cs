@@ -11,9 +11,14 @@ public class Items : MonoBehaviour {
     //2 = Coin
     //3 = Exit key
     public Exit exit;
+    //Sprite renderer and used variable
+    private SpriteRenderer sr;
+    private bool used = false;
 
     private void Start()
     {
+        //Get renderer
+        sr = GetComponent<SpriteRenderer>();
         //Get exit
         GameObject exitObject = GameObject.Find("Exit");
         exit = exitObject.GetComponent<Exit>();
@@ -22,7 +27,7 @@ public class Items : MonoBehaviour {
     public void OnTriggerStay2D(Collider2D collision)
     {
         //See if collided with player
-        if (collision.gameObject.name=="Player" && collision.gameObject.GetComponent<Player>().canMove)
+        if (collision.gameObject.name=="Player" && collision.gameObject.GetComponent<Player>().canMove && !used)
         {
             //Key
             if (type==1)
@@ -32,22 +37,40 @@ public class Items : MonoBehaviour {
                 {
                     l.GetComponent<Lock>().Open();
                 }
-                Destroy(gameObject);
+                Used();
             }
             //Coin
             if (type==2)
             {
                 Debug.Log("Got coin!");
                 GameManager.instance.coins += 1;
-                Destroy(gameObject);
+                Used();
             }
             //Exit Key
             if (type == 3)
             {
                 Debug.Log("Got exit key!");
                 exit.keysNeeded--;
-                Destroy(gameObject);
+                Used();
             }
+        }
+    }
+
+    public void Used()
+    {
+        if (!used)
+        {
+            used = true;
+            sr.enabled = false;
+        }
+    }
+
+    public void Return()
+    {
+        if (used)
+        {
+            used = false;
+            sr.enabled = true;
         }
     }
 }

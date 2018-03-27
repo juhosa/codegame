@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224303387573991912}
   - component: {fileID: 222694507210614270}
   - component: {fileID: 114562671676911748}
+  - component: {fileID: 114902583002927500}
   m_Layer: 0
   m_Name: TextForButton
   m_TagString: Untagged
@@ -48,7 +49,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 6416dee632d850d499650a000000de21, type: 3}
     m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
@@ -61,6 +62,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: xx
+--- !u!114 &114902583002927500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159908427706996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b56b9d3a2513925488c56843441247f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &222694507210614270
 CanvasRenderer:
   m_ObjectHideFlags: 1
