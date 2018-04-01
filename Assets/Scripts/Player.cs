@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
         //Origin of the player
         Vector2 orig = new Vector2(transform.position.x, transform.position.y);
         //Draw debug raycast lines
-        Debug.DrawRay(orig, Vector2.down * 0.01f, Color.red);
+        //Debug.DrawRay(orig, Vector2.down * 0.01f, Color.red);
         //Debug.DrawRay(orig, Vector2.up * rayLengthLong, Color.red);
         //Debug.DrawRay(orig, Vector2.left * rayLengthLong, Color.red);
         //Debug.DrawRay(orig, Vector2.right * rayLengthLong, Color.red);
@@ -61,10 +61,6 @@ public class Player : MonoBehaviour {
             if (transform.localScale.x > 0)
             {
                 transform.localScale = new Vector3(transform.localScale.x - 0.05f, transform.localScale.y - 0.05f, transform.localScale.z - 0.05f);
-            }
-            else
-            {
-                Destroy(gameObject);
             }
         }
 
@@ -273,6 +269,8 @@ public class Player : MonoBehaviour {
         transform.position = startPos;
         dir = startDir;
         canMove = true;
+        dead = false;
+        transform.localScale = new Vector3(1, 1, 1);
         RotateSprite();
     }
 

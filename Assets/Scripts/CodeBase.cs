@@ -156,5 +156,12 @@ public class CodeBase : MonoBehaviour {
     public void Used()
     {
         used = true;
+        StartCoroutine(WaitUsed());
+    }
+
+    private IEnumerator WaitUsed()
+    {
+        yield return new WaitForSeconds(0.2f);
+        used = false;
     }
 }

@@ -56,7 +56,7 @@ public class Reader : MonoBehaviour {
         {
             CodeBase rayCodebase = ray.collider.gameObject.GetComponent<CodeBase>();
 
-            if (!rayCodebase.used && rayCodebase.HasSprite())
+            if (!rayCodebase.used && rayCodebase.HasSprite() && !playerObject.dead)
             {
                 //Make player do actions corresponding the codebase
                 if (rayCodebase.GetSprite() == codeBlockSprite[0])

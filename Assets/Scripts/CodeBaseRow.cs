@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class CodeBaseRow : MonoBehaviour {
 
     private Vector3 startpo;
-    private Vector2 lastpo;
     private float speed = 3f;
 
     public int rowSize = 1;
@@ -32,11 +31,6 @@ public class CodeBaseRow : MonoBehaviour {
             CodeBase basR = Instantiate(basePrefab, posR, Quaternion.identity);
             basR.transform.name = "CodeBase "+i;
             basR.transform.parent = transform;
-            //Record position to lastpo if last created codebase
-            if (i == rowSize)
-            {
-                lastpo = basR.transform.position;
-            }
         }
         //Create the codeblock givers
         for (int i=0; i<codeGivers.Length; i++)
@@ -78,7 +72,7 @@ public class CodeBaseRow : MonoBehaviour {
                 Vector2 pos = new Vector2(child.transform.position.x-0.16f, child.transform.position.y);
                 reader = Instantiate(readerPrefab, pos, Quaternion.identity);
                 reader.transform.parent = transform;
-                reader.posDifference = lastpo.x - startpo.x;
+                reader.posDifference = rowSize * 0.32f+0.16f;
                 break;
             }
         }
