@@ -114,6 +114,7 @@ public class Reader : MonoBehaviour {
         if (!GameManager.instance.levelCompleted)
         {
             GameManager.instance.running = false;
+            //This reset part could have been done very easily with parenting, but oh well
             //Reset all codebases so they can be used again
             CodeBase[] allObjects = FindObjectsOfType<CodeBase>();
             foreach (CodeBase cb in allObjects)
@@ -126,10 +127,31 @@ public class Reader : MonoBehaviour {
             {
                 itm.Return();
             }
+            //Reset all locks
+            Lock[] allLocks = FindObjectsOfType<Lock>();
+            foreach (Lock lck in allLocks)
+            {
+                lck.ResetDoor();
+            }
+            //Reset all lasers
+            Cameralight[] allLights = FindObjectsOfType<Cameralight>();
+            foreach (Cameralight cam in allLights)
+            {
+                cam.ResetLight();
+            }
+            //Reset camera button
+            Camerabutton[] allButtons = FindObjectsOfType<Camerabutton>();
+            foreach (Camerabutton cam in allButtons)
+            {
+                cam.ResetButton();
+            }
+
+
             //Reset exit
             exitObject.ResetDoor();
             //Return player to start
             playerObject.ReturtToStart();
+            
         }
         Destroy(gameObject);
     }

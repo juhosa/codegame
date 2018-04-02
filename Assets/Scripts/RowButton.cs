@@ -9,15 +9,18 @@ public class RowButton : MonoBehaviour {
 
     private void Update()
     {
-        Vector2 clickpo = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
-        //Debug.Log(clickpo);
-        if (Input.GetMouseButton(0) && left && ((clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f)))
+        if (!GameManager.instance.running && !GameManager.instance.levelCompleted)
         {
-            row.GetComponent<CodeBaseRow>().MoveLeft();
-        }
-        if (Input.GetMouseButton(0) && !left && ((clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f)))
-        {
-            row.GetComponent<CodeBaseRow>().MoveRight();
+            Vector2 clickpo = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+            //Debug.Log(clickpo);
+            if (Input.GetMouseButton(0) && left && ((clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f)))
+            {
+                row.GetComponent<CodeBaseRow>().MoveLeft();
+            }
+            if (Input.GetMouseButton(0) && !left && ((clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f)))
+            {
+                row.GetComponent<CodeBaseRow>().MoveRight();
+            }
         }
     }
 }

@@ -315,7 +315,7 @@ public class Player : MonoBehaviour {
             //Origin of the player
             Vector2 orig = new Vector2(transform.position.x, transform.position.y);
             //Raycasting
-            RaycastHit2D ray_left = Physics2D.Raycast(orig, Vector2.right, rayLength, wallLayer);
+            RaycastHit2D ray_left = Physics2D.Raycast(orig, Vector2.left, rayLength, wallLayer);
 
             if (!ray_left)
             {
@@ -332,7 +332,7 @@ public class Player : MonoBehaviour {
             //Origin of the player
             Vector2 orig = new Vector2(transform.position.x, transform.position.y);
             //Raycasting
-            RaycastHit2D ray_left = Physics2D.Raycast(orig, Vector2.right, rayLength, wallLayer);
+            RaycastHit2D ray_left = Physics2D.Raycast(orig, Vector2.down, rayLength, wallLayer);
 
             if (!ray_left)
             {
