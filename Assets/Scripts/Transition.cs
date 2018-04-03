@@ -11,6 +11,7 @@ public class Transition : MonoBehaviour {
 
     public string destinationScene;
     private bool expand = true;
+    public int instant = 0;
     
 
     private void Start()
@@ -39,8 +40,15 @@ public class Transition : MonoBehaviour {
     private IEnumerator WaitAndGo()
     {
         yield return new WaitForSeconds(0.5f);
-        GameObject end = Instantiate(endPrefab);
-        end.transform.SetParent(levelCanvas.transform, false);
-        expand = false;
+        if (instant == 0)
+        {
+            GameObject end = Instantiate(endPrefab);
+            end.transform.SetParent(levelCanvas.transform, false);
+            expand = false;
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(destinationScene);
+        }
     }
 }

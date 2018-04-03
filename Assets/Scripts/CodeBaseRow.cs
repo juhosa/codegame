@@ -86,6 +86,19 @@ public class CodeBaseRow : MonoBehaviour {
         }
     }
 
+    public void ClearCode()
+    {
+        if (!GameManager.instance.running && !GameManager.instance.levelCompleted)
+        {
+            //Reset all bases
+            CodeBase[] allBases = FindObjectsOfType<CodeBase>();
+            foreach (CodeBase cb in allBases)
+            {
+                cb.ReturnToStart();
+            }
+        }
+    }
+
     public void MoveLeft()
     {
         transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);

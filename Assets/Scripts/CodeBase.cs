@@ -87,9 +87,6 @@ public class CodeBase : MonoBehaviour {
                 //Destroy with left click
                 if (Input.GetMouseButtonDown(1))
                 {
-                    //Reset sprite to the first one of the array when left clicked so count++ works
-                    if (blockId == 1) { sr.sprite = spriteLoopBlock[0]; }
-                    if (blockId == 2) { sr.sprite = spriteLoopBlockEnd[0]; }
                     ReturnToStart();
                 }
             }
@@ -100,6 +97,11 @@ public class CodeBase : MonoBehaviour {
     {
         if (HasSprite())
         {
+            //Reset sprite to the first one of the array when left clicked so count++ works
+            if (blockId == 1) { sr.sprite = spriteLoopBlock[0]; }
+            if (blockId == 2) { sr.sprite = spriteLoopBlockEnd[0]; }
+            currentSprite = 0;
+
             Vector2 middle = new Vector2(transform.position.x, transform.position.y);
             Drag block = Instantiate(codeBlock, middle, Quaternion.identity);
             block.follow = false;

@@ -12,6 +12,7 @@ public class Exit : MonoBehaviour {
     private Player playerObject;
 
     public Transition transitionPrefab;
+    public string nextLevel = "Menu";
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class Exit : MonoBehaviour {
 
             Vector2 pos = new Vector2(3.2f, 5.1f);
             Transition tra = Instantiate(transitionPrefab, pos, Quaternion.identity) as Transition;
-            tra.destinationScene = "Menu";
+            tra.destinationScene = nextLevel;
         }
     }
 
