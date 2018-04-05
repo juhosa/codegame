@@ -13,9 +13,18 @@ public class Exit : MonoBehaviour {
 
     public Transition transitionPrefab;
     public string nextLevel = "Menu";
+    public int levelId = 0;
+    public int levelCoins = 0;
 
     private void Start()
     {
+        //Save the level as 1 if first time in level
+        if (GameManager.instance.levelData[levelId] < 1)
+        {
+            GameManager.instance.levelData[levelId] = 1;
+            GameManager.instance.SaveLevel();
+        }
+
         anim = GetComponent<Animator>();
         bc2d = GetComponent<BoxCollider2D>();
         //Get player to do actions for him
@@ -39,6 +48,20 @@ public class Exit : MonoBehaviour {
             Vector2 pos = new Vector2(3.2f, 5.1f);
             Transition tra = Instantiate(transitionPrefab, pos, Quaternion.identity) as Transition;
             tra.destinationScene = nextLevel;
+
+            //Save level done
+            if (GameManager.instance.coins == levelCoins)
+            {
+                GameManager.instance.levelData[levelId] = 3;
+            }
+            else
+            {
+                if (GameManager.instance.levelData[levelId] < 3)
+                {
+                    GameManager.instance.levelData[levelId] = 2;
+                }
+            }
+            GameManager.instance.SaveLevel();
         }
     }
 

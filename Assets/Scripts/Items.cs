@@ -32,7 +32,6 @@ public class Items : MonoBehaviour {
             //Key
             if (type==1)
             {
-                Debug.Log("Got Key!");
                 foreach (GameObject l in locks)
                 {
                     l.GetComponent<Lock>().Open();
@@ -42,14 +41,12 @@ public class Items : MonoBehaviour {
             //Coin
             if (type==2)
             {
-                Debug.Log("Got coin!");
-                GameManager.instance.coins += 1;
+                GameManager.instance.coins++;
                 Used();
             }
             //Exit Key
             if (type == 3)
             {
-                Debug.Log("Got exit key!");
                 exit.keysNeeded--;
                 Used();
             }

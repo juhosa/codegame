@@ -1934,6 +1934,16 @@ Prefab:
       propertyPath: nextLevel
       value: Level07
       objectReference: {fileID: 0}
+    - target: {fileID: 114471831285616406, guid: 3e9c99652dc6a4c40a34cad0a82dda68,
+        type: 2}
+      propertyPath: levelId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114471831285616406, guid: 3e9c99652dc6a4c40a34cad0a82dda68,
+        type: 2}
+      propertyPath: levelCoins
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e9c99652dc6a4c40a34cad0a82dda68, type: 2}
   m_IsPrefabParent: 0

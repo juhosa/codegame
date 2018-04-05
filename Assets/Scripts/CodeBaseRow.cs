@@ -23,6 +23,11 @@ public class CodeBaseRow : MonoBehaviour {
 
     private void Start()
     {
+        //Reset running and finished since new level
+        GameManager.instance.levelCompleted = false;
+        GameManager.instance.running = false;
+        GameManager.instance.coins = 0;
+
         startpo = transform.position;
         //Create the coderow
         for (int i=0; i<=rowSize; i++)
@@ -54,17 +59,7 @@ public class CodeBaseRow : MonoBehaviour {
         if (!GameManager.instance.running && !GameManager.instance.levelCompleted)
         {
             GameManager.instance.running = true;
-            /*
-            int childBlocks = 0;
-            //Count all children with sprites
-            foreach (Transform child in transform)
-            {
-                if (child.GetComponent<CodeBase>().HasSprite())
-                {
-                    childBlocks += 1;
-                }
-            }
-            */
+
             //Get the first base with a codeblock starting from the left
             foreach (Transform child in transform)
             {
@@ -83,6 +78,8 @@ public class CodeBaseRow : MonoBehaviour {
         if (reader != null && !GameManager.instance.levelCompleted)
         {
             reader.Stop();
+            //Also reset coins
+            GameManager.instance.coins = 0;
         }
     }
 

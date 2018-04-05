@@ -7,6 +7,13 @@ public class RowButton : MonoBehaviour {
     public GameObject row;
     public bool left = true;
 
+    private SpriteRenderer sr;
+
+    private void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+    }
+
     private void Update()
     {
         if (!GameManager.instance.running && !GameManager.instance.levelCompleted)
@@ -16,10 +23,16 @@ public class RowButton : MonoBehaviour {
             if (Input.GetMouseButton(0) && left && ((clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f)))
             {
                 row.GetComponent<CodeBaseRow>().MoveLeft();
+                sr.color = Color.blue;
             }
-            if (Input.GetMouseButton(0) && !left && ((clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f)))
+            else if (Input.GetMouseButton(0) && !left && ((clickpo.x > -0.16f) && (clickpo.x < 0.16f) && (clickpo.y > -0.16f) && (clickpo.y < 0.16f)))
             {
                 row.GetComponent<CodeBaseRow>().MoveRight();
+                sr.color = Color.blue;
+            }
+            else
+            {
+                sr.color = Color.white;
             }
         }
     }
