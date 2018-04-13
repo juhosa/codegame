@@ -32,6 +32,24 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Insert))
+        {
+            levelData[0] = 3;
+            levelData[1] = 3;
+            levelData[2] = 3;
+            levelData[3] = 3;
+            levelData[4] = 3;
+            levelData[5] = 3;
+            levelData[6] = 3;
+            levelData[7] = 3;
+            levelData[8] = 3;
+            levelData[9] = 3;
+            SaveLevel();
+        }
+    }
+
     private void Awake()
     {
         if (instance==null)

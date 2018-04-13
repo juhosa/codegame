@@ -13,8 +13,9 @@ public class UIbutton : MonoBehaviour
 
     //4 = Play game (to level select)
     //5 = Quit game (menu)
+    //7 = credits (menu)
 
-    //6 = Back (level select)
+    //6 = Back (level select/credits)
 
     private SpriteRenderer sr;
 
@@ -66,6 +67,10 @@ public class UIbutton : MonoBehaviour
             if (type == 6)
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+            }
+            if (type == 7)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Credits");
             }
 
             StartCoroutine(ClickResponse());

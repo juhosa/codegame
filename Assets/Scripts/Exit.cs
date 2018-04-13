@@ -7,9 +7,10 @@ public class Exit : MonoBehaviour {
     public int keysNeeded;
     private bool opened;
 
-    private Animator anim;
     private BoxCollider2D bc2d;
     private Player playerObject;
+    private Animator anim;
+    public string exitAnimName;
 
     public Transition transitionPrefab;
     public string nextLevel = "Menu";
@@ -25,8 +26,10 @@ public class Exit : MonoBehaviour {
             GameManager.instance.SaveLevel();
         }
 
-        anim = GetComponent<Animator>();
         bc2d = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
+        anim.speed = 0;
+        anim.Play(exitAnimName, 0, 0);
         //Get player to do actions for him
         GameObject player = GameObject.Find("/Grid/Player");
         playerObject = player.GetComponent<Player>();
@@ -37,7 +40,7 @@ public class Exit : MonoBehaviour {
         if (keysNeeded==0 && !opened)
         {
             opened = true;
-            anim.SetBool("Open",opened);
+            anim.speed = 1;
             bc2d.enabled = false;
         }
         if (opened && playerObject.transform.position == transform.position && !GameManager.instance.levelCompleted)
@@ -68,7 +71,10 @@ public class Exit : MonoBehaviour {
     public void ResetDoor()
     {
         opened = false;
-        anim.SetBool("Open", opened);
+
+        anim.speed = 0;
+        anim.Play(exitAnimName,0,0);
+
         bc2d.enabled = true;
         keysNeeded = 1;
     }

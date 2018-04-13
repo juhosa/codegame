@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level03
   levelId: 2
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &136080102
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9af513c597d6ca49b348415be433379, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -394,6 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level07
   levelId: 6
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &526102178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -453,7 +455,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0a55c913f9947447aa87f3e30bd94e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -581,6 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level09
   levelId: 8
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &559837784
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -640,7 +643,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3211e712a3e4adf468d7b9e2f698d74f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -694,6 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level010
   levelId: 9
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &761301863
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -753,7 +757,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c12b7c221938e414b8d38fca3a3f2641, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -807,6 +811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level01
   levelId: 0
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &826007091
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -866,7 +871,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a3ef3331ff6edc40b43272f682ee50f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -920,6 +925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level06
   levelId: 5
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &910763407
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -979,7 +985,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25547b996b8b5434f90efa12704fc2f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1033,6 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level05
   levelId: 4
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &977859186
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1092,7 +1099,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0ce126e0864c364ca30e2da39803de4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1146,6 +1153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level08
   levelId: 7
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &1115591471
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1205,7 +1213,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a41062cd602518c43a1c583952584e92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1259,6 +1267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level02
   levelId: 1
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &1285389986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1318,7 +1327,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc88b5c6f6b5f0a4fb26d891d69431bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1549,7 +1558,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6e6566a0c8c1c7b42bc829bdb627dd75, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ef4b41fe94d3ce49b20921579f81b67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1641,6 +1650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationScene: Level04
   levelId: 3
+  coinPrefab: {fileID: 1131639885510544, guid: abb56a36431b5984da33c58aef332a61, type: 2}
 --- !u!61 &2145454259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1700,7 +1710,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 69f65f6224d636d4b9be7023861c239e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce4a7c72aacdb6a418d66ef0214a060a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

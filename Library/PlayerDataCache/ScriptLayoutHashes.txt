@@ -2,6 +2,7 @@ WindowsStandalone
 SceneListBegin?
 Assets/Scenes/Menu.unity
 Assets/Scenes/LevelSelect.unity
+Assets/Scenes/Credits.unity
 Assets/Scenes/Level01.unity
 Assets/Scenes/Level02.unity
 Assets/Scenes/Level03.unity
@@ -13,7 +14,7 @@ Assets/Scenes/Level08.unity
 Assets/Scenes/Level09.unity
 Assets/Scenes/Level10.unity
 SceneListEnd?
-d4fbf4c66a7aa6edd610a4ae8f89ebf1 Assembly-CSharp.dll:.Exit
+9f42487785190556143032f5432c3534 Assembly-CSharp.dll:.Exit
 b76bc73adcfa7de9c6495d1f00c3e934 Assembly-CSharp.dll:.GameManager
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -170,4 +171,4 @@ e79a689f3b651ba42c75a04562fd9f58 Assembly-CSharp.dll:.Lock
 26f9e1abd15ea740072f729e89082077 Assembly-CSharp.dll:.Transition
 39a3e4ebb181c66f2b50f2d677377a2f Assembly-CSharp.dll:.RowButton
 54d200354704135ff55776e2c5e4a6bb Assembly-CSharp.dll:.Items
-50ced905339a938b6c5e44fb7898aeb8 Assembly-CSharp.dll:.UIbuttonLevelSelect
+9b0cc900169c61d72eca6476988ed92e Assembly-CSharp.dll:.UIbuttonLevelSelect

@@ -12,6 +12,8 @@ public class UIbuttonLevelSelect : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    public GameObject coinPrefab;
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -25,6 +27,11 @@ public class UIbuttonLevelSelect : MonoBehaviour
         else
         {
             locked = false;
+            if (GameManager.instance.levelData[levelId] == 3)
+            {
+                Vector2 pos = new Vector2(transform.position.x+0.425f, transform.position.y);
+                GameObject coin = Instantiate(coinPrefab, pos, Quaternion.identity);
+            }
         }
     }
 

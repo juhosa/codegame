@@ -1646,6 +1646,17 @@ Prefab:
       propertyPath: levelCoins
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114471831285616406, guid: 3e9c99652dc6a4c40a34cad0a82dda68,
+        type: 2}
+      propertyPath: exitAnimName
+      value: AnimExitOpen2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212449491536231976, guid: 3e9c99652dc6a4c40a34cad0a82dda68,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: abbcc7e1906dbba449c547bd962e820d,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e9c99652dc6a4c40a34cad0a82dda68, type: 2}
   m_IsPrefabParent: 0

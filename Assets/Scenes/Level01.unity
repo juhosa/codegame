@@ -149,7 +149,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4329947554288514, guid: d51dd1b04399d4847986dbd14be1b5af, type: 2}
       propertyPath: m_RootOrder
-      value: 33
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 4329947554288514, guid: d51dd1b04399d4847986dbd14be1b5af, type: 2}
       propertyPath: m_LocalScale.x
@@ -1054,7 +1054,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4329947554288514, guid: d51dd1b04399d4847986dbd14be1b5af, type: 2}
       propertyPath: m_RootOrder
-      value: 34
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 4329947554288514, guid: d51dd1b04399d4847986dbd14be1b5af, type: 2}
       propertyPath: m_LocalScale.x
@@ -1712,7 +1712,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4884099975807106, guid: 66cc3e376e3a7a942a624728d68b6c2b, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1365898535206426, guid: 66cc3e376e3a7a942a624728d68b6c2b, type: 2}
       propertyPath: m_Name
@@ -1733,6 +1733,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1737889319}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Animations.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4188828284714868, guid: 3e9c99652dc6a4c40a34cad0a82dda68, type: 2}
       propertyPath: m_LocalPosition.x
       value: 4.32
@@ -1775,7 +1779,26 @@ Prefab:
       propertyPath: levelCoins
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 212449491536231976, guid: 3e9c99652dc6a4c40a34cad0a82dda68,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Animations.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: 0f39e99cbfc917647b90321cb16812d4, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_AnimatePhysics
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114471831285616406, guid: 3e9c99652dc6a4c40a34cad0a82dda68,
+        type: 2}
+      propertyPath: exitAnimName
+      value: AnimExitOpen
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 3e9c99652dc6a4c40a34cad0a82dda68, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1297542696 stripped
