@@ -8,4 +8,5 @@
 /Temp/*
 /.vs/*
 
+# Unnecessary comment
 Library/
